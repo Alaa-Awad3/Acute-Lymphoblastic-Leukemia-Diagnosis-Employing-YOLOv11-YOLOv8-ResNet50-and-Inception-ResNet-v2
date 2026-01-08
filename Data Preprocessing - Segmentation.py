@@ -4,8 +4,8 @@ import matplotlib.pyplot as plt
 import os
 
 # 1. Define the folder paths for input images and output images
-input_folder = "A:\\A\\Research\\ALL_IDB2\\ALL_IDB2\\Cancer"  # Replace with the folder containing your images
-output_folder = "A:\\A\\Research\\ALL_IDB2\\ALL_IDB2\\data\\Cancer"   # Replace with the folder to save the results
+input_folder = "The path containing original images"
+output_folder = "The path where the segmented images will be saved"
 
 # Create the output folder if it doesn't exist
 if not os.path.exists(output_folder):
@@ -43,25 +43,6 @@ for filename in os.listdir(input_folder):
         segmented_bgr = cv2.cvtColor(segmented_image,
                                      cv2.COLOR_RGB2BGR)  # Convert RGB back to BGR for saving with OpenCV
         cv2.imwrite(output_path, segmented_bgr)
-
-        # Optional: Display each result (can be commented out for batch processing)
-        plt.figure(figsize=(10, 5))
-        plt.subplot(1, 3, 1)
-        plt.imshow(image_rgb)
-        plt.title('Original Image')
-        plt.axis('off')
-
-        plt.subplot(1, 3, 2)
-        plt.imshow(mask, cmap='gray')
-        plt.title('Mask')
-        plt.axis('off')
-
-        plt.subplot(1, 3, 3)
-        plt.imshow(segmented_image)
-        plt.title('Segmented Image')
-        plt.axis('off')
-
-        #plt.show()
 
         print(f"Processed and saved: {filename}")
 
